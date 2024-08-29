@@ -72,7 +72,7 @@ export function AboutSect() {
 
 export function SkillSect() {
     return <section id="skills">
-    <h2><span className="delight">//</span>Skills</h2>
+    <h2><span className="delight">{"//"}</span>Skills</h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
         
         <div className="skill">
@@ -123,7 +123,7 @@ export function SkillSect() {
 
 export function TestimonialSect() {
     return <section id="testimonials">
-    <h2><span className="delight">//</span>Testimonials</h2>
+    <h2><span className="delight">{"//"}</span>Testimonials</h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6">
 
         <div className="testimony">
@@ -175,7 +175,7 @@ export function TestimonialSect() {
 export function ProjectSect() {
     const myprojects = mypages.filter((v) => {return v.type == "project"})
     return <section id="projects">
-    <h2><span className="delight">//</span>Projects</h2>
+    <h2><span className="delight">{"//"}</span>Projects</h2>
 
         <div className="projects-cards">
             <ul>
