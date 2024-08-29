@@ -45,7 +45,7 @@ export function Footer() {
         Copyright © 2024
     </div>
     <div>
-        <a className="btn mx-2" href="mailto:info@tawananyasha.com">Email</a> / <a className="btn mx-2" href="htpps://wa.me/+263785733582">Whatsapp</a> / <a className="btn mx-2" href="tel:+263785733582">Call</a>
+        <a className="btn mx-2" href="mailto:info@tawananyasha.com">Email</a> / <a className="btn mx-2" href="https://wa.me/+263785733582">Whatsapp</a> / <a className="btn mx-2" href="tel:+263785733582">Call</a>
     </div>
 </footer>
 }
