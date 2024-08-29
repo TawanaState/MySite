@@ -11,7 +11,7 @@ export default function Page(params:any) {
 function ContentSect() {
     return <>
     <header className="mt-[4rem] md:mt-[1rem] p-8 md:p-[8rem] lg:px-[22rem] lg:py-[5rem] !pb-6 md:!pb-10">
-        <img className="object-cover h-[30vh] w-[100%] md:h-[45vh]" src="./assets/img/blog/blog-3.jpg" alt="" />
+        <img className="object-cover h-[30vh] w-[100%] md:h-[45vh]" src="/og.png" alt="" />
     </header>
     <article className="px-10 md:px-[10rem] lg:px-[25rem] *:mb-3 text-lg text-justify">
         <h1 className="text-4xl text-opacity-100 uppercase">From Physics Enthusiast to Passionate Programmer: My Journey 🔥🎵🥁🎸👨‍💻</h1>
