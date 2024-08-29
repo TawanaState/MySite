@@ -181,7 +181,7 @@ export function ProjectSect() {
             <ul>
                 {
                     myprojects.map((v, k) => {
-                        return <li style={{backgroundImage : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0,0,0,0.2)), url(${v.cover})`, backgroundPosition : "center center"}}>
+                        return <li key={k} style={{backgroundImage : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0,0,0,0.2)), url(${v.cover})`, backgroundPosition : "center center"}}>
                         <a className="!opacity-100 !transform-none" href={"/page/" + v.slug}>{v.title}</a>
                         </li>
                     })
