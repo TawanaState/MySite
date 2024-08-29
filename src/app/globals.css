@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --primary : rgb(80, 80, 224);
+    --primary-rgb: 80 80 224;
+    --secondary: rgb(12, 174, 133);/*#303030, just the primary width an added hs*l* */;
+    --secondary-rgb : 12 174 133;
+    --textcolor:#3d3d3d;
+    --text-color-rgb : 250 250 250;
+    --highlight:rgb(0, 173, 0);/*#6366f1*/
+    --highlight-rgb:0 173 0;
+    --border:rgb(208, 213, 217);
+    --mute:100 100 100;
+    --light-rgb : 230 235 238;
+    --dark-rgb : 18 18 18;
+    --lines : rgb(0 0 0 / 30%);
+    color-scheme: light;
+    --cur-bg : var(--light-rgb);
+    background-color: rgb(var(--light-rgb));
+    color: var(--textcolor);
+    font-weight:600;
+    overflow-x: hidden;
+    --slash-shadow : 20px 5px 20px 8px rgba(0, 0, 0, 0.2), 0px 0px 10px 0px rgba(0, 0, 0, 0.1), -20px 0px 20px 5px rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        color-scheme: dark;
+        background-color: rgb(var(--dark-rgb));
+        --cur-bg : var(--dark-rgb);
+        --textcolor :hsl(0, 0%, 90%);
+        --mute : 209 213 219;
+        --border:hsl(0, 0%, 40%);
+        --lines : rgb(255 255 255 / 10%);
+        --slash-shadow : 20px 6px 20px 11px rgb(0 0 0), 0px 0px 0px 1px rgb(18 18 18), 0px 0px 20px 20px rgb(255 255 255 / 5%);
+    }
+}
+main *{
+    view-timeline-name: --subjectReveal;
+    animation: scroll-fade-in both;
+    animation-timeline: --subjectReveal;
+    animation-range: cover 0% cover 30%;
+    animation-duration: 100ms; /* Firefox requires this to apply the animation */
+}
+@keyframes scroll-fade-in {
+    from{
+        opacity: 0;
+        transform: translateY(5vh);
+        scale: 0.9;
+    }
+}
+article a, a.link{
+    @apply transition-all bg-primary bg-opacity-10 hover:bg-opacity-25 p-2 py-0.5 rounded-sm text-primary;
+}
+
+h1{
+    @apply font-bold text-opacity-70 text-mute;
+    filter: brightness(0.99);
+}
+h1 > b{
+    @apply font-bold transition-all;
+    display: inline-block;
+    text-overflow: clip;
+    overflow: clip;
+    animation: open-heading-animation 25s cubic-bezier(0.075, 0.82, 0.165, 1) 1ms 1 forwards;
+}
+@keyframes open-heading-animation {
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 100%;
+    }
+}
+a.btn, button{
+    @apply underline transition-all decoration-dotted underline-offset-[5px] hover:underline-offset-[6px] py-2 px-0 my-3 font-mono inline-block hover:opacity-80 hover:text-primary;
+}
+input:not([type="checkbox"]){
+    outline: none;
+    border-bottom: 1px solid var(--border);
+    background-color: transparent;
+    @apply px-2 transition-all mx-1 focus:py-1 h-fit focus:bg-gray-300 focus:bg-opacity-10 focus:border-none md:text-xl placeholder:font-extrabold placeholder:uppercase font-bold;
+}
+h2, #about h1{
+    @apply font-bold text-[2rem] md:text-[3rem] text-mute pb-3;
+}
+section .grid h2, .grid h1{
+    @apply text-[2rem] md:!text-[3.3rem];
+}
+span.delight{
+    font-family: 'Consolas', monospace;
+    font-weight: bolder;
+    @apply text-primary text-opacity-90 transition-all;
+}
+div.hero h1{
+    @apply text-[5rem] md:text-[6rem];
+}
+div.hero span:last-child:after, div.hero span:first-child:before{
+    content: "";
+    border-top: 1px solid var(--lines);
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: 50%;
+    position: relative;
+    z-index: -10;
+    transform: rotate(90deg) translateY(50%) scaleX(150);
+}
+div.hero span:first-child:before{
+    margin-left: -51%;
+}
+
+h2 > span{
+    @apply !font-extrabold inline-block translate-y-[-3px] mr-2 md:mr-6;
+}
+header div.hero h1 span{
+    box-shadow: var(--slash-shadow);
+    @apply text-light text-opacity-0;
+    transform: scaleX(.6) skewX(-35deg);
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+header hr{
+    @apply w-full;
+    height: 1px;
+    border-top: 1px solid var(--lines);
+    opacity: .5;
+}
+
+@media (min-width: 768px) {
+    #about{
+        grid-template-columns: 1fr 2fr;
+    }
+}
+ul.tags{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @apply text-sm gap-1.5 font-mono font-normal text-mute;
+}
+ul.tags > li::before{
+    content: "#";
+    margin-right: 1px;
+}
+
+
+
+/* :: Navbar -----------------------------------*/
+nav{
+    @apply flex flex-row justify-between items-center fixed top-0 left-0 w-full p-4 px-[1.5rem] md:px-[12rem] z-[99997];
+    backdrop-filter: blur(40px);
+    background-color: transparent;
+}
+nav > div > a{
+    @apply hover:text-primary transition-colors;
+}
+nav button{
+    @apply no-underline transition-all text-center outline-double outline-2 outline-offset-[2px] outline-primary p-1.5 px-2.5 bg-primary hover:bg-transparent hover:opacity-100 hover:after:mx-2 after:content-[""] hover:after:content-[">"] text-white;
+}
+nav button::before{
+    content: "Email Me";
+    animation: nav-action 10s ease-in-out 1ms infinite forwards;
+}
+@keyframes nav-action {
+    0%{
+        content: "Email Me";
+    }
+    25%{
+        content: "Github";
+    }
+    50%{
+        content: "Whatsapp";
+    }
+}
+nav > input{
+    @apply appearance-none transition-all cursor-pointer scale-x-[1.2] tracking-[0.1rem] hover:tracking-[0.15rem];
+}
+nav > input::before{
+    content: "|||";
+    display: block;
+    transform: rotateZ(90deg);
+    @apply block md:hidden;
+}
+nav > input:checked{
+    @apply z-[99999];
+}
+nav > input:checked::before{
+    content: "X";
+    @apply text-xl font-thin scale-100 block md:hidden;
+}
+nav > div{
+    @apply transition-all;
+}
+nav:has(input:checked) > div{
+    @apply z-[99998] !flex fixed top-0 left-0 w-full h-[100vh] bg-[rgb(var(--cur-bg))];
+    backdrop-filter: blur(20px);
+}
+
+
+/* :: Skills ------------------------------------*/
+div.skill{
+    grid-template-rows: auto;
+    @apply grid p-6 gap-2 border border-solid border-primary rounded-md cursor-pointer hover:shadow-lg;
+    transition-property: box-shadow border;
+    transition-duration: .2s
+}
+div.skill:hover img{
+    scale: 1.05;
+    transition-property: scale;
+    transition-delay: .1s;
+    transition-duration: .2s
+}
+div.skill > span{
+    @apply text-[6rem] text-primary block border-primary border-x-[10px] w-[30px] h-[30px] -skew-x-12;
+}
+
+/* :: -------------------------------------------------*/
+
+
+
+/* :: Projects ------------------------------------*/
+section#projects{
+    @apply grid px-3 gap-2;
+    grid-template-columns: 1fr;
+}
+section#projects .projects-cards{
+    @apply overflow-x-auto scroll-m-2;
+}
+section#projects .projects-cards::-webkit-scrollbar{
+    content: "";
+    height: 10px;
+    opacity: 0;
+}
+section#projects .projects-cards::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
+section#projects .projects-cards ul{
+    @apply grid gap-4 grid-cols-[repeat(6,50vw)] md:grid-cols-[repeat(6,20vw)];
+}
+section#projects .projects-cards ul li{
+    @apply h-[30vh] md:h-[50vh] flex flex-col justify-end rounded;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0,0,0,0.2)), url(../../public/img/blog/blog-2.jpg);
+    background-size: cover;
+}
+section#projects .projects-cards ul li:last-child{
+    margin-right: 10px;
+}
+section#projects .projects-cards ul li a{
+    @apply p-3 text-white text-lg md:text-2xl font-bold tracking-wider font-sans;
+}
+/* ::  -----------------------------------------------------*/
+
+
+
+
+/* :: Testimonials ------------------------------------*/
+section#testimonials .testimony{
+    @apply grid grid-flow-row p-6 gap-2 border border-solid border-primary rounded-md cursor-pointer hover:shadow-lg;
+    transition-property: box-shadow border;
+    transition-duration: .2s
+}
+section#testimonials .testimony > div{
+    @apply flex flex-row items-center justify-between gap-6;
+}
+section#testimonials .testimony > div > span{
+    @apply p-3 px-1 border-x-8 border-mute border-opacity-50 border-solid -skew-x-12;
+}
+section#testimonials .testimony > div > p{
+    @apply flex flex-col;
+}
+section#testimonials .testimony > div > p > span:nth-child(2){
+    @apply text-xs text-mute text-opacity-50;
+}
+section#testimonials .testimony > div > p > span:nth-child(1){
+    @apply text-sm text-mute;
+}
+
+
+
+section#contact{
+    @apply px-3;
+}
