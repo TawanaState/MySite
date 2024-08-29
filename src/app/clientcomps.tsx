@@ -4,7 +4,7 @@ import React from "react";
 
 export default function ContactSect() {
 
-    const onsubmit = (e) => {
+    const onsubmit = (e:any) => {
         const f_tel =document.querySelector("input#f_tel").value;
         const f_fullname =document.querySelector("input#f_fullname").value;
         const f_idea =document.querySelector("input#f_idea").value;
